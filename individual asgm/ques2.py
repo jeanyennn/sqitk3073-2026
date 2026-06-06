@@ -1,6 +1,5 @@
 import yfinance as yf
 import pandas as pd
-import matplotlib.pyplot as plt
 
 
 stocks = {
@@ -67,5 +66,27 @@ portfolio_summary = df[
     ]
 ]
 
+def performance_category(return_pct):
+
+    if return_pct < 0:
+        return "Negative Return"
+
+    elif return_pct <= 2:
+        return "Moderate Return"
+
+    else:
+        return "High Return"
+
+
+df["Performance Category"] = df[
+    "Return Percentage"
+].apply(performance_category)
+
+group_analysis = df.groupby(
+    "Performance Category"
+)["Estimated Total Return"].mean()
+
 print(portfolio_summary)
+print(df)
+print(group_analysis)
 
