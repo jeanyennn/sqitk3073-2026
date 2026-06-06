@@ -69,4 +69,3 @@ portfolio_summary = df[
 
 print(portfolio_summary)
 
-#print(df)
